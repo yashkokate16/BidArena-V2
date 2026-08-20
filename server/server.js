@@ -1,7 +1,7 @@
 import app from "./src/app.js";
 import connectDB from "./src/config/db.js";
 import env from "./src/config/env.js";
-// import { startAuctionJob } from "./src/services/auction.jobs.js";
+import { startAuctionJob } from "./src/services/auction.jobs.js";
 import { createServer } from "http";
 import { initializeSocketServer } from "./src/socket/socket.server.js";
 
@@ -12,7 +12,7 @@ async function startServer() {
 
         await connectDB();
 
-        // startAuctionJob();
+        startAuctionJob();
 
         initializeSocketServer(server);
 
