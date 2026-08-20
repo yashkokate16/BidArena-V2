@@ -13,3 +13,10 @@ export let getBidsByAuction = async (auctionId) =>{
     .sort({amount: -1})
 }
 
+export let getMyBids = async (bidderId) => {
+    return await bidModel
+    .find({bidderId})
+    .populate("auctionId")
+    .sort({createdAt: -1})
+}
+

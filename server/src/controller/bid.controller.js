@@ -77,3 +77,36 @@ export let getBidsByAuction = async(req, res) =>{
         });
     }
 }
+
+export let getMyBids = async (req, res) =>{
+    console.log("get ny bids controller called")
+    try{
+
+        let bidderId = req.userId;
+
+        let bids = await bidService.getMyBids(bidderId)
+
+        return res.status(200).json({
+            success: true,
+            message: "Your bids fetched successfully",
+            bids
+        }); 
+    } catch(error) {
+        console.error(
+            "Error in get my bids controller:",
+            error
+        );
+
+        if (error instanceof ApiError) {
+            return res.status(error.statusCode).json({
+                success: false,
+                message: error.message
+            });
+        }
+
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error"
+        });
+    }
+}

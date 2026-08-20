@@ -9,6 +9,7 @@ const envSchema = z.object({
     MONGODB_URI: z.string().min(1),
     ACCESS_TOKEN_SECRET: z.string(),
     REFRESH_TOKEN_SECRET: z.string(),
+    CLIENT_URL:z.string(),
 
 });
 
